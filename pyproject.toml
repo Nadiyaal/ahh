@@ -15,4 +15,4 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
-start = "streamlit run ./app.py"
+start = "streamlit run ./baruuap.py"

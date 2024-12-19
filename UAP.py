@@ -56,18 +56,16 @@ text = st.text_area(
 # Fungsi prediksi sentimen
 def prediction(input_text):
     try:
-        # Load tokenizer dan model
         tokenizer_path = Path(__file__).parent / "model/tokenizer.joblib"
         model_path = Path(__file__).parent / "model/model_lstm.h5"
 
         if not tokenizer_path.is_file() or not model_path.is_file():
-            st.error("❌ Tokenizer atau model tidak ditemukan. Pastikan file tersedia di folder `model`.")
+            st.error("❌ Tokenizer atau model tidak ditemukan.")
             return None
 
         tokenizer = joblib.load(tokenizer_path)
         model = tf.keras.models.load_model(model_path)
 
-        # Proses input teks
         if not input_text.strip():
             st.warning("⚠️ Teks tidak boleh kosong!")
             return None
@@ -77,7 +75,6 @@ def prediction(input_text):
 
         # Prediksi model
         raw_pred = model.predict(pad_seq, verbose=0)
-        st.write(f"🔍 Probabilitas prediksi mentah: {raw_pred[0]}")  # Debugging
         result = np.argmax(raw_pred, axis=1)[0]  # Output: 0 (Negatif), 1 (Netral), 2 (Positif)
         return result
     except Exception as e:
