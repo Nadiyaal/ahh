@@ -129,6 +129,10 @@ Hasil dari Confusion Matrix
 
 ![image](https://github.com/user-attachments/assets/5b5c959f-fd7d-4ace-ac4b-b7b0b4c2b864)
 
+#### 🔗 Link Google Colab
+Untuk akses notebook Google Colab, klik tautan berikut:  
+[Google Colab Notebook](https://colab.research.google.com/drive/11zsktHJstrSbi9ofArmoVHHhPUtJavFw?hl=id#scrollTo=axwcMYbUMUcI&uniqifier=1)
+
 ### 📊 BERT
 Model BERT (Bidirectional Encoder Representations from Transformers) digunakan untuk memanfaatkan representasi teks berbasis transformer yang lebih kaya. Model ini sangat efektif dalam memahami konteks dua arah dalam teks.
 
