@@ -32,6 +32,13 @@ Ikuti langkah-langkah berikut untuk menginstal dependencies dan menjalankan apli
    git remote add origin https://github.com/Nadiyaal/UAP_ML.git
    git branch -M main
    git push -u origin main
+
+   commit
+   git status
+   git add (sesuai file yang di tambahkan)
+   git commit -m "coba"
+   git push main
+   
    ```
 
 2. **Buat Virtual Environment:**
@@ -89,49 +96,49 @@ Hasil dari model lstm yang telah di bangun
 
 | Layer Type               | Output Shape          | Number of Parameters |
 |--------------------------|-----------------------|----------------------|
-| Embedding                | (None, 100, 128)      | 640,000              |
-| LSTM                     | (None, 128)           | 131,584              |
-| Dense                    | (None, 3)             | 387                  |
+| Embedding                | (None, 100, 256)      | 1,280,000            |
+| LSTM                     | (None, 256)           | 525,312              |
+| Dense                    | (None, 3)             | 771                  |
 
 
 
 #### 📊 Hasil Evaluasi Model LSTM
-1. **Training Accuracy:** Model berhasil mencapai akurasi di atas 90%.
-2. **Validation Accuracy:** Stabil di sekitar 85%.
-3. **Testing Accuracy:** Hasil akhir model menunjukkan akurasi sebesar **83%** pada dataset testing.
+   1. **Training Accuracy**: Sangat tinggi, lebih dari 90%.
+   2. **Validation Accuracy**: Stabil di sekitar 85%, menunjukkan kemampuan model untuk menggeneralisasi dengan baik.
+   3. **Testing Accuracy**: Sedikit lebih rendah (82%), yang dapat menunjukkan tantangan dalam generalisasi pada data yang lebih bervariasi atau berbeda dari data pelatihan.
 
 #### 📝 Classification Report LSTM
 
 | Label | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.88      | 0.90   | 0.89     | 4925    |
-| 1     | 0.93      | 0.91   | 0.92     | 871     |
-| 2     | 0.87      | 0.89   | 0.88     | 1002    |
+| 0     | 0.89      | 0.90   | 0.89     | 4925    |
+| 1     | 0.66      | 0.59   | 0.62     | 871     |
+| 2     | 0.63      | 0.64   | 0.64     | 1002    |
 
-Accuracy: 83%
-
-Macro Average: Precision = 0.74, Recall = 0.73, F1-Score = 0.73 Weighted Average: Precision = 0.83, Recall = 0.83, F1-Score = 0.83 
+Accuracy: 82%
 
 #### 📉 Grafik Akurasi LSTM
 
-![image](https://github.com/user-attachments/assets/5fb1703f-50f0-4196-b81b-d622c2fa9fce)
+![image](https://github.com/user-attachments/assets/3532e560-be20-4637-b592-70193d31c729)
 
 Training accuracy meningkat secara signifikan dan mencapai hampir 100% setelah beberapa epoch. Testing accuracy stabil di sekitar 83%, menunjukkan adanya sedikit overfitting. 
 
 #### 📉 Grafik Loss LSTM
 
-![image](https://github.com/user-attachments/assets/73ee70e3-1aca-40ae-9c4b-317eb4c016a5)
+![image](https://github.com/user-attachments/assets/d513718a-6fd7-4602-93f9-fd5440756dc7)
 
 Training loss terus menurun secara konsisten. Testing loss meningkat setelah beberapa epoch, menandakan adanya overfitting. 
 
 #### 🧩 Confusion Matrix 📊
 Hasil dari Confusion Matrix
 
-![image](https://github.com/user-attachments/assets/5b5c959f-fd7d-4ace-ac4b-b7b0b4c2b864)
+![image](https://github.com/user-attachments/assets/559b97a4-ca57-4b20-9808-1ab7881c06c5)
+
 
 #### 🔗 Link Google Colab
 Untuk akses notebook Google Colab, klik tautan berikut:  
-[Google Colab Notebook](https://colab.research.google.com/drive/11zsktHJstrSbi9ofArmoVHHhPUtJavFw?hl=id#scrollTo=axwcMYbUMUcI&uniqifier=1)
+[Google Colab Notebook]
+(https://colab.research.google.com/drive/1MsFQt9TNeomKSAOpfp-p-lakFaDSQ47k#scrollTo=AdYreKCqJKw_)
 
 ### 📊 BERT
 Model BERT (Bidirectional Encoder Representations from Transformers) digunakan untuk memanfaatkan representasi teks berbasis transformer yang lebih kaya. Model ini sangat efektif dalam memahami konteks dua arah dalam teks.
@@ -160,24 +167,28 @@ Pada tahap preprocessing  mencakup data cleaning untuk menghilangkan noise atau 
 | 1     | 0.93      | 0.91   | 0.92     | 871     |
 | 2     | 0.87      | 0.89   | 0.88     | 1002    |
 
-
----
-
-## 📊 Hasil dan Analisis
-
-### 📈 Perbandingan Performa Model
-| Model | Training Accuracy | Validation Accuracy | Testing Accuracy |
-|-------|-------------------|---------------------|------------------|
-| LSTM  | 90%               | 85%                 | 87%              |
-| BERT  | 95%               | 90%                 | 92%              |
-
-### 📉 Grafik Performa
+#### 📉 Grafik BERT
 
 1. **Accuracy:**
    - Grafik menunjukkan bahwa model BERT memiliki akurasi lebih tinggi dibandingkan LSTM pada validation dan testing.
 
 2. **Loss:**
    - Model BERT memiliki loss yang lebih rendah pada training dan validation dibandingkan LSTM.
+
+---
+
+#### 🧩 Confusion Matrix 📊
+Hasil dari Confusion Matrix
+
+
+## 📊 Hasil dan Analisis
+
+### 📈 Perbandingan Performa Model
+| Model | Training Accuracy | Validation Accuracy | Testing Accuracy |
+|-------|-------------------|---------------------|------------------|
+| LSTM  | 90%               | 85%                 | 82%              |
+| BERT  | 95%               | 90%                 | 92%              |
+
 
 ---
 
@@ -190,5 +201,3 @@ Aplikasi web telah di-deploy dan dapat diakses melalui tautan berikut:
 
 ## 👨‍💻 Author
 👨‍💻 **Nadiya Dewi Al Khlifi**  
-NIM: 202110370311225  
-Universitas Muhammadiyah Malang
