@@ -4,7 +4,7 @@ import base64
 import subprocess
 
 # Menambahkan gambar latar belakang menggunakan CSS
-image_path = Path(__file__).parent / "UAP.jpg"  # Ganti dengan path gambar Anda
+image_path = Path(__file__).parent / "image/UAP.jpg"  # Ganti dengan path gambar Anda
 if image_path.is_file():
     # Mengonversi gambar ke base64
     with open(image_path, "rb") as img_file:
