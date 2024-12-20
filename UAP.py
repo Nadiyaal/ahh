@@ -10,7 +10,7 @@ import base64
 st.set_page_config(page_title="Klasifikasi Teks Sentimen", page_icon="🖍", layout="centered")
 
 # Mengonversi gambar latar belakang menjadi Base64
-image_path = Path(__file__).parent / "UAP.jpg"  # Ganti dengan path gambar Anda
+image_path = Path(__file__).parent / "image/UAP.jpg"  # Ganti dengan path gambar Anda
 if image_path.is_file():
     with open(image_path, "rb") as img_file:
         encoded_image = base64.b64encode(img_file.read()).decode()
@@ -18,7 +18,7 @@ if image_path.is_file():
     background_css = f"""
     <style>
     .stApp {{
-        background-image: url("data:image/jpeg;base64,{encoded_image}");
+        background-image: url("data:image/jpg;base64,{encoded_image}");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -37,6 +37,14 @@ else:
 
 st.markdown("<h1 class='stTitle'>🖍 Klasifikasi Teks Sentimen🖍  Selamat Datang di Aplikasi Klasifikasi Sentimen Berbasis AI!</h1>", unsafe_allow_html=True)
 
+# Menambahkan gambar di bawah judul aplikasi
+saham_image_path = Path(__file__).parent / "image/saham.jpg"
+if saham_image_path.is_file():
+    st.image(str(saham_image_path), width=300)  
+else:
+    st.warning("⚠️ Gambar 'saham.png' tidak ditemukan!")
+
+# Input teks dari pengguna
 text = st.text_area(
     "✍️ **Silakan masukkan teks yang ingin Anda analisis:**",
     placeholder="Contoh: Produk ini luar biasa! Kualitasnya sangat memuaskan. 😊",
