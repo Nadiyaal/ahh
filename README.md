@@ -36,7 +36,7 @@ Ikuti langkah-langkah berikut untuk menginstal dependencies dan menjalankan apli
    git status
    git add (sesuai file yang ditambahkan)
    git commit -m "coba"
-   git push main
+   git push origin main
   
    ```
 
