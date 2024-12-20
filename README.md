@@ -193,7 +193,7 @@ Hasil dari Confusion Matrix
 
 ## 🔗 Link Live Demo
 Aplikasi web telah di-deploy dan dapat diakses melalui tautan berikut:  
-[Live Demo Aplikasi](https://barutauuu.streamlit.app/)
+[Live Demo Aplikasi](https://uaplatihan.streamlit.app/)
 
 
 ---
