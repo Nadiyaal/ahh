@@ -13,7 +13,8 @@
 
 ---
 
-## 📋 Deskripsi Proyek
+## 📋 Deskripsi Proyek {#deskripsi-proyek}
+
 Proyek ini bertujuan untuk mengembangkan model analisis sentimen pada berita ekonomi di Twitter, khususnya dari akun CNBC Indonesia, untuk memprediksi pergerakan harga saham di Indonesia. 
 
 Analisis ini memanfaatkan data berita yang diunggah pada akun Twitter CNBC Indonesia. Dengan metode ini, sistem dapat mengelompokkan berita berdasarkan sentimen positif, negatif, atau netral, yang kemudian digunakan untuk memperkirakan dampaknya terhadap dinamika harga saham.
