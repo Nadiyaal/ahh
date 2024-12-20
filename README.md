@@ -198,5 +198,6 @@ Aplikasi web telah di-deploy dan dapat diakses melalui tautan berikut:
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Author  
 👨‍💻 **Nadiya Dewi Al Khlifi**  
+[Nadiya Dewi Al Khlifi](https://github.com/Nadiyaal)
