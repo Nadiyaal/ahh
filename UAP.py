@@ -1,3 +1,4 @@
+import subprocess
 import streamlit as st
 import tensorflow as tf
 import numpy as np
@@ -8,86 +9,77 @@ import base64
 # Konfigurasi halaman utama
 st.set_page_config(page_title="Klasifikasi Teks Sentimen", page_icon="🖍", layout="centered")
 
-# Menambahkan gambar latar belakang menggunakan CSS
+# Mengonversi gambar latar belakang menjadi Base64
 image_path = Path(__file__).parent / "UAP.jpg"  # Ganti dengan path gambar Anda
 if image_path.is_file():
     with open(image_path, "rb") as img_file:
         encoded_image = base64.b64encode(img_file.read()).decode()
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{encoded_image}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
-            color: black;
-            font-weight: bold;
-        }}
-        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown p {{
-            color: black;
-            font-weight: bold;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+
+    background_css = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpeg;base64,{encoded_image}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }}
+    .stTitle {{
+        color: black !important;  
+        font-weight: bold;
+        text-align: center;
+    }}
+    </style>
+    """
+    st.markdown(background_css, unsafe_allow_html=True)
 else:
-    st.warning("🚨 Gambar latar belakang tidak ditemukan. Pastikan file `UAP.jpg` tersedia di folder aplikasi.")
+    st.error("⚠️ Gambar latar belakang tidak ditemukan!")
 
-# Judul aplikasi
-st.title("🖍 Klasifikasi Teks Sentimen *Selamat Datang di Aplikasi Klasifikasi Sentimen Berbasis AI!*")
+st.markdown("<h1 class='stTitle'>🖍 Klasifikasi Teks Sentimen🖍  Selamat Datang di Aplikasi Klasifikasi Sentimen Berbasis AI!</h1>", unsafe_allow_html=True)
 
-# Menampilkan gambar pendukung
-image_path = Path(__file__).parent / "saham.jpg"
-if image_path.is_file():
-    st.image(str(image_path), width=400)
-else:
-    st.warning("🚨 Gambar tidak ditemukan. Pastikan file `saham.jpg` tersedia di folder aplikasi.")
-
-# Input teks dari pengguna
 text = st.text_area(
     "✍️ **Silakan masukkan teks yang ingin Anda analisis:**",
     placeholder="Contoh: Produk ini luar biasa! Kualitasnya sangat memuaskan. 😊",
     height=150
 )
 
-# Fungsi prediksi sentimen
 def prediction(input_text):
+    if not input_text.strip():
+        st.warning("⚠️ Teks tidak boleh kosong!")
+        return None
+    
     try:
-        tokenizer_path = Path(__file__).parent / "model/tokenizer.joblib"
-        model_path = Path(__file__).parent / "model/model_lstm.h5"
-
-        if not tokenizer_path.is_file() or not model_path.is_file():
-            st.error("❌ Tokenizer atau model tidak ditemukan.")
-            return None
-
-        tokenizer = joblib.load(tokenizer_path)
-        model = tf.keras.models.load_model(model_path)
-
-        if not input_text.strip():
-            st.warning("⚠️ Teks tidak boleh kosong!")
-            return None
-
+        tokenizer = joblib.load(Path(__file__).parent / "model/tokenizer.joblib")
+        model = tf.keras.models.load_model(Path(__file__).parent / "model/model_lstm.h5")
+        
         sequences = tokenizer.texts_to_sequences([input_text])
         pad_seq = tf.keras.preprocessing.sequence.pad_sequences(sequences, maxlen=100, padding='post')
 
-        # Prediksi model
-        raw_pred = model.predict(pad_seq, verbose=0)
-        result = np.argmax(raw_pred, axis=1)[0]  # Output: 0 (Negatif), 1 (Netral), 2 (Positif)
+        # Prediksi mentah (probabilitas untuk setiap kelas)
+        raw_pred = model.predict(pad_seq, verbose=0)[0]
+        
+        # Menampilkan raw prediction untuk debugging
+        st.write(f"Raw Prediction (Probabilitas): {raw_pred}")
+        
+        # Menentukan hasil prediksi berdasarkan probabilitas tertinggi
+        max_prob = np.max(raw_pred)
+        
+        if max_prob < 0.3:
+            return 2  # Netral jika probabilitas terlalu rendah
+
+        # Menggunakan argmax untuk mendapatkan kelas dengan probabilitas tertinggi
+        result = np.argmax(raw_pred)  # Output: 0 (Negatif), 1 (Positif), 2 (Netral)
         return result
+    
     except Exception as e:
         st.error(f"❌ Terjadi kesalahan: {e}")
         return None
 
-# Tombol untuk menganalisis sentimen
-if st.button("🔍 **Analisis Sentimen**"):
-    st.subheader("📊 **Hasil Analisis Sentimen**")
-    classes = ["❌ Negatif", "🔘 Netral", "✅ Positif"]
+if st.button("🔍 Analisis Sentimen"):
+    st.subheader("📊 Hasil Analisis Sentimen")
+    classes = ["❌ Negatif (0)", "✅ Positif (1)", "🔘 Netral (2)"]
 
-    # Efek loading dengan animasi
-    with st.spinner("⏳ **AI sedang menganalisis teks Anda...**"):
+    with st.spinner("⏳ Memproses teks Anda..."):
         progress = st.progress(0)
         for percent_complete in range(1, 101):
             progress.progress(percent_complete / 100)
@@ -97,37 +89,18 @@ if st.button("🔍 **Analisis Sentimen**"):
         st.error("⚠️ Gagal memproses prediksi.")
     else:
         if result == 0:
-            st.markdown(f"<h3 style='color: red; font-weight: bold;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='color: red;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
             st.snow()  # Efek salju untuk negatif
         elif result == 1:
-            st.markdown(f"<h3 style='color: orange; font-weight: bold;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
-        else:
-            st.markdown(f"<h3 style='color: green; font-weight: bold;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='color: green;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
             st.balloons()  # Efek balon untuk positif
+        else:
+            st.markdown(f"<h3 style='color: orange;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
 
-        # Rincian tambahan dengan kotak latar belakang hitam
-        with st.expander("🔎 **Lihat Detail Analisis**"):
-            st.markdown(
-                f"""
-                <div style="background-color: black; padding: 20px; border-radius: 10px;">
-                    <p style="color: white; font-weight: bold;">**Teks Anda:** {text}</p>
-                    <p style="color: white; font-weight: bold;">**Klasifikasi Sentimen:** {classes[result]}</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+        with st.expander("📖 Detail Hasil Prediksi"):
+            st.write(f"Teks yang dimasukkan: **{text}**")
+            st.write(f"Klasifikasi Sentimen: **{classes[result]}**")
 
-# Pesan kembali ke halaman utama
-st.markdown(
-    """
-    🏠 Klik tombol di bawah untuk kembali ke halaman utama!
-    """,
-    unsafe_allow_html=True
-)
-if st.button("🔙 **Kembali ke Halaman Utama**"):
-    st.info("**Aplikasi siap untuk analisis teks berikutnya! 🚀**")
-
-# Mengubah warna tombol "Analisis Sentimen" menjadi merah
 st.markdown(
     """
     <style>
@@ -138,3 +111,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+if st.button("🔙 Kembali ke Halaman Utama"):
+    subprocess.run(["streamlit", "run", "app.py"])
+    st.write("**Aplikasi kembali dijalankan!**")
