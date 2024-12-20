@@ -3,7 +3,7 @@
 ## 📑 Table of Contents
 1. [📋 Deskripsi Proyek](#deskripsi-proyek)
 2. [⚙️ Langkah Instalasi](#langkah-instalasi)
-3. [🗂️ Overview Dataset](#Overview-Dataset)
+3. [🗂️ Overview Dataset](#overview-dataset)
 4. [🧠 Deskripsi Model](#deskripsi-model)
    - [📈 LSTM](#lstm)
    - [📊 BERT](#bert)
@@ -13,8 +13,7 @@
 
 ---
 
-## 📋 Deskripsi Proyek {#deskripsi-proyek}
-
+## 📋 Deskripsi Proyek
 Proyek ini bertujuan untuk mengembangkan model analisis sentimen pada berita ekonomi di Twitter, khususnya dari akun CNBC Indonesia, untuk memprediksi pergerakan harga saham di Indonesia. 
 
 Analisis ini memanfaatkan data berita yang diunggah pada akun Twitter CNBC Indonesia. Dengan metode ini, sistem dapat mengelompokkan berita berdasarkan sentimen positif, negatif, atau netral, yang kemudian digunakan untuk memperkirakan dampaknya terhadap dinamika harga saham.
@@ -22,7 +21,6 @@ Analisis ini memanfaatkan data berita yang diunggah pada akun Twitter CNBC Indon
 ---
 
 ## ⚙️ Langkah Instalasi
-
 Ikuti langkah-langkah berikut untuk menginstal dependencies dan menjalankan aplikasi:
 
 1. **Clone Repository:**
@@ -32,14 +30,14 @@ Ikuti langkah-langkah berikut untuk menginstal dependencies dan menjalankan apli
    git commit -m "Inisialisasi proyek"
    git remote add origin https://github.com/Nadiyaal/UAP_ML.git
    git branch -M main
-   git push -u origin main
+   git push -u origin main
 
    commit
    git status
-   git add (sesuai file yang di tambahkan)
+   git add (sesuai file yang ditambahkan)
    git commit -m "coba"
    git push main
-   
+  
    ```
 
 2. **Buat Virtual Environment:**
