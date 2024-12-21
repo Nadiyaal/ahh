@@ -71,9 +71,9 @@ Dataset diambil dari [Master Data File Full Columns](https://github.com/ervandio
 - **Periode Pengumpulan Data:** 06 Juli 2020 hingga 11 Januari 2021
 - **Jumlah Variabel:** 5 kolom
 - **Jumlah Observasi:** 33.989 baris
-  Data dibagi menjadi dua bagian: 80% untuk Training Set dan 20% untuk Testing Set. dimana pada setiap Set, terdapat 3 Label Class yaitu
-  - Label "1" menunjukkan bahwa berita memiliki sentimen positif yang dapat berpengaruh terhadap kenaikan harga saham.
+  Data dibagi menjadi dua bagian: 80% untuk Training Set dan 20% untuk Testing Set. Dimana pada setiap Set, terdapat 3 Label Class yaitu:
   - Label "0" menunjukkan bahwa berita memiliki sentimen negatif yang dapat berpengaruh terhadap penurunan harga saham.
+  - Label "1" menunjukkan bahwa berita memiliki sentimen positif yang dapat berpengaruh terhadap kenaikan harga saham.
   - Label "2" menunjukkan bahwa berita memiliki sentimen netral yang tidak berpengaruh apapun terhadap pergerakan harga saham.
     
 ## 🧠 Deskripsi Model
@@ -228,7 +228,7 @@ https://colab.research.google.com/drive/1UzBbQt5mKvm93xSGgXrqX2c2iqXLyTDd#scroll
    - *LSTM*
       * Cocok untuk data dengan urutan kronologis yang jelas, namun terbatas dalam memahami hubungan nonlinier yang kompleks.
    - *BERT*
-   -  * Lebih baik dalam menangani konteks kompleks dan hubungan non-linier, memungkinkan dapat melakukan tugas analisis sentimen terperinci dengan lebih efektif.
+      * Lebih baik dalam menangani konteks kompleks dan hubungan non-linier, memungkinkan dapat melakukan tugas analisis sentimen terperinci dengan lebih efektif.
 
 ### **Kesimpulan akhir**:
 Akurasi dan generalisasi yang lebih tinggi untuk analisis sentimen, **BERT** adalah pilihan yang lebih baik daripada **LSTM**. Namun, ketika sumber daya komputasi terbatas, **LSTM** tetap menjadi pilihan yang efisien dan cukup handal.
