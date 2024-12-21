@@ -4,7 +4,7 @@ import base64
 import subprocess
 
 # Menambahkan gambar latar belakang menggunakan CSS
-image_path = Path(__file__).parent / "image/UAP.jpg"  # Ganti dengan path gambar Anda
+image_path = Path(__file__).parent / "image/UAP.jpg" 
 if image_path.is_file():
     # Mengonversi gambar ke base64
     with open(image_path, "rb") as img_file:
@@ -73,7 +73,7 @@ st.markdown('<div class="main-header">✨ Selamat Datang di Ujian Akhir Pratikum
 # Input nama pengguna
 nama = st.text_input("📝 Masukkan Nama Anda:", placeholder="Contoh: Nadiya")
 
-# Menampilkan sambutan personal jika nama dimasukkan
+# Menampilkan sambutan personal nama yang dimasukkan
 if nama:
     st.markdown(f'<div class="black-text">👋 Selamat Datang, {nama}! 🚀</div>', unsafe_allow_html=True)
     st.markdown(
