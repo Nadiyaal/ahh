@@ -8,8 +8,9 @@
    - [📈 LSTM](#lstm)
    - [📊 BERT](#bert)
 5. [📊 Hasil dan Analisis](#hasil-dan-analisis)
-6. [🔗 Link Live Demo](#link-live-demo)
-7. [👨‍💻 Author](#author)
+6. [📊 Kesimpulan perbandingan model LSTM dan BERT](#Kesimpulan-perbandingan-model-LSTM-dan-BERT)
+7. [🔗 Link Live Demo](#link-live-demo)
+8. [👨‍💻 Author](#author)
 
 ---
 
@@ -36,7 +37,7 @@ Ikuti langkah-langkah berikut untuk menginstal dependencies dan menjalankan apli
    git status
    git add (sesuai file yang ditambahkan)
    git commit -m "coba"
-   git push main
+   git push origin main
   
    ```
 
@@ -102,7 +103,7 @@ Hasil dari model lstm yang telah di bangun
 
 
 #### 📊 Hasil Evaluasi Model LSTM
-   1. **Training Accuracy**: Sangat tinggi, lebih dari 90%.
+   1. **Training Accuracy**: Sangat tinggi, lebih dari 100%.
    2. **Validation Accuracy**: Stabil di sekitar 85%, menunjukkan kemampuan model untuk menggeneralisasi dengan baik.
    3. **Testing Accuracy**: Sedikit lebih rendah (82%), yang dapat menunjukkan tantangan dalam generalisasi pada data yang lebih bervariasi atau berbeda dari data pelatihan.
 
@@ -136,8 +137,8 @@ Hasil dari Confusion Matrix
 
 #### 🔗 Link Google Colab
 Untuk akses notebook Google Colab, klik tautan berikut:  
-[Google Colab Notebook]
-(https://colab.research.google.com/drive/1MsFQt9TNeomKSAOpfp-p-lakFaDSQ47k#scrollTo=AdYreKCqJKw_)
+
+https://colab.research.google.com/drive/1MsFQt9TNeomKSAOpfp-p-lakFaDSQ47k#scrollTo=AdYreKCqJKw_
 
 ### 📊 BERT
 Model BERT (Bidirectional Encoder Representations from Transformers) digunakan untuk memanfaatkan representasi teks berbasis transformer yang lebih kaya. Model ini sangat efektif dalam memahami konteks dua arah dalam teks.
@@ -155,30 +156,41 @@ Berikut adalah ilustrasi struktur BERT:
 Pada tahap preprocessing  mencakup data cleaning untuk menghilangkan noise atau data yang tidak relevan, tokenisasi untuk memecah teks menjadi kata atau token, dan stopword removal untuk menghapus kata-kata yang tidak penting seperti "dan", "atau", dan "adalah". dilanjut dengan melakukan splitting dataset menjadi 2 (Training, dan Testing) sesuai dengan penjelasan pada Dataset.
 
 #### 📊 Hasil Evaluasi Model BERT
-1. **Training Accuracy:** Model berhasil mencapai akurasi hingga 95%.
-2. **Validation Accuracy:** Stabil di sekitar 90%.
-3. **Testing Accuracy:** Akurasi model pada dataset testing mencapai **92%**.
+1. **Training Accuracy**: Meningkat secara signifikan dari 77.52% ke 89.25%.
+2. **Validation Accuracy**: Stabil di sekitar 80%-85%, mencerminkan kemampuan model untuk menggeneralisasi data yang tidak terlihat.
+3. **Testing Accuracy**: Sekitar 84%, menandakan bahwa model cukup baik dalam melakukan prediksi pada data baru setelah pelatihan.
 
 #### 📝 Classification Report BERT
 | Label | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.88      | 0.90   | 0.89     | 4925    |
-| 1     | 0.93      | 0.91   | 0.92     | 871     |
-| 2     | 0.87      | 0.89   | 0.88     | 1002    |
+| 0     | 0.65      | 0.77   | 0.70     | 890     |
+| 1     | 0.70      | 0.70   | 0.70     | 1013    |
+| 2     | 0.93      | 0.93   | 0.90     | 4894    |
 
 #### 📉 Grafik BERT
 
 1. **Accuracy:**
-   - Grafik menunjukkan bahwa model BERT memiliki akurasi lebih tinggi dibandingkan LSTM pada validation dan testing.
+   
+![image](https://github.com/user-attachments/assets/ed2f75f5-c69b-4d63-a9c3-663729a840a1)
+Training accuracy meningkat pesat hingga hampir 95%, dengan testing accuracy stabil di sekitar 92%, menunjukkan model BERT dapat menggeneralisasi dengan baik.
 
-2. **Loss:**
-   - Model BERT memiliki loss yang lebih rendah pada training dan validation dibandingkan LSTM.
+3. **Loss:**
+   
+![image](https://github.com/user-attachments/assets/4ccde93a-4bb8-4aa8-9ca4-b53cf55c141e)
+Training loss terus menurun, sementara testing loss sedikit meningkat, menandakan adanya sedikit overfitting, namun tidak signifikan.
+
 
 ---
 
 #### 🧩 Confusion Matrix 📊
 Hasil dari Confusion Matrix
 
+![image](https://github.com/user-attachments/assets/babcb283-66d9-4840-8b17-c7813e391b38)
+
+#### 🔗 Link Google Colab
+Untuk akses notebook Google Colab, klik tautan berikut: 
+
+https://colab.research.google.com/drive/1UzBbQt5mKvm93xSGgXrqX2c2iqXLyTDd#scrollTo=EEtvjmJhS43S
 
 ## 📊 Hasil dan Analisis
 
@@ -186,14 +198,46 @@ Hasil dari Confusion Matrix
 | Model | Training Accuracy | Validation Accuracy | Testing Accuracy |
 |-------|-------------------|---------------------|------------------|
 | LSTM  | 90%               | 85%                 | 82%              |
-| BERT  | 95%               | 90%                 | 92%              |
+| BERT  |77.52% ke 89.25%   | 80%-85%             | 84%              |
 
+---
+
+### 📊 Kesimpulan perbandingan model LSTM dan BERT
+
+1. **Akurasi** :
+   - *LSTM* :
+     * Akurasi training mencapai 90% dan akurasi test mencapai 82%.
+     * Performa bagus dalam menangkap konteks temporal, namun terdapat bukti overfitting karena terdapat kesenjangan antara akurasi training dan test.
+   - *BERT*:
+     * Akurasi training meningkat menjadi 89,25% dan akurasi test mencapai 84%.
+     * Memahami konteks teks dua arah lebih baik daripada LSTM, sehingga menghasilkan generalisasi yang lebih kuat.
+
+2. **Loss**:
+   - *LSTM*
+      * Loss training terus menurun, tetapi test pengujian meningkat setelah beberapa epoch. Hal ini menunjukkan bahwa model cenderung overfit. 
+   - *BERT*
+     * Loss training terus menurun, dan peningkatan kerugian test relatif kecil, menunjukkan sedikit overfitting namun masih dapat dikelola. 
+ 
+ 3. **Kemampuan generalisasi**:
+    - *LSTM*
+       * Dapat memahami urutan teks dengan baik, namun cenderung overfit.
+    - *BERT*
+       * Model dengan  arsitektur transformator dua arah ini lebih baik dalam memahami hubungan yang kompleks dan menunjukkan kemampuan generalisasi yang lebih baik.
+
+4. **Fleksibilitas penyesuaian**:
+   - *LSTM*
+      * Cocok untuk data dengan urutan kronologis yang jelas, namun terbatas dalam memahami hubungan nonlinier yang kompleks.
+   - *BERT*
+   -  * Lebih baik dalam menangani konteks kompleks dan hubungan non-linier, memungkinkan dapat melakukan tugas analisis sentimen terperinci dengan lebih efektif.
+
+### **Kesimpulan akhir**:
+Akurasi dan generalisasi yang lebih tinggi untuk analisis sentimen, **BERT** adalah pilihan yang lebih baik daripada **LSTM**. Namun, ketika sumber daya komputasi terbatas, **LSTM** tetap menjadi pilihan yang efisien dan cukup handal.
 
 ---
 
 ## 🔗 Link Live Demo
 Aplikasi web telah di-deploy dan dapat diakses melalui tautan berikut:  
-[Live Demo Aplikasi](https://barutauuu.streamlit.app/)
+[Live Demo Aplikasi](https://uaplatihan.streamlit.app/)
 
 
 ---
