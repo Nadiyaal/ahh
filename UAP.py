@@ -36,7 +36,7 @@ if image_path.is_file():
 else:
     st.error("⚠️ Gambar latar belakang tidak ditemukan!")
 
-st.markdown("<h1 class='stTitle'>🖍 Klasifikasi Teks Sentimen🖍  Selamat Datang di Aplikasi Klasifikasi Sentimen unttuk Ujian Akhir Praktikum Pembelajarn Mesin!</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='stTitle'>🖍Klasifikasi Teks Sentimen🖍</h1>", unsafe_allow_html=True)
 
 # Input teks dari pengguna
 text = st.text_area(
