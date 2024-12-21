@@ -103,7 +103,7 @@ Hasil dari model lstm yang telah di bangun
 
 
 #### 📊 Hasil Evaluasi Model LSTM
-   1. **Training Accuracy**: Sangat tinggi, lebih dari 100%.
+   1. **Training Accuracy**: Signifikan hampir mencapai 100%.
    2. **Validation Accuracy**: Stabil di sekitar 85%, menunjukkan kemampuan model untuk menggeneralisasi dengan baik.
    3. **Testing Accuracy**: Sedikit lebih rendah (82%), yang dapat menunjukkan tantangan dalam generalisasi pada data yang lebih bervariasi atau berbeda dari data pelatihan.
 
@@ -156,29 +156,30 @@ Berikut adalah ilustrasi struktur BERT:
 Pada tahap preprocessing  mencakup data cleaning untuk menghilangkan noise atau data yang tidak relevan, tokenisasi untuk memecah teks menjadi kata atau token, dan stopword removal untuk menghapus kata-kata yang tidak penting seperti "dan", "atau", dan "adalah". dilanjut dengan melakukan splitting dataset menjadi 2 (Training, dan Testing) sesuai dengan penjelasan pada Dataset.
 
 #### 📊 Hasil Evaluasi Model BERT
-1. **Training Accuracy**: Meningkat secara signifikan dari 77.52% ke 89.25%.
-2. **Validation Accuracy**: Stabil di sekitar 80%-85%, mencerminkan kemampuan model untuk menggeneralisasi data yang tidak terlihat.
-3. **Testing Accuracy**: Sekitar 84%, menandakan bahwa model cukup baik dalam melakukan prediksi pada data baru setelah pelatihan.
+1. **Training Accuracy**: Meningkat secara signifikan mecapai 95%.
+2. **Validation Accuracy**: Stabil di sekitar 80%-87%, mencerminkan kemampuan model untuk menggeneralisasi data yang tidak terlihat.
+3. **Testing Accuracy**: Sekitar 85%, menandakan bahwa model cukup baik dalam melakukan prediksi pada data baru setelah pelatihan.
 
 #### 📝 Classification Report BERT
 | Label | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.65      | 0.77   | 0.70     | 890     |
-| 1     | 0.70      | 0.70   | 0.70     | 1013    |
-| 2     | 0.93      | 0.93   | 0.90     | 4894    |
+| 0     | 0.70      | 0.71   | 0.71     | 890     |
+| 1     | 0.67      | 0.73   | 0.70     | 1013    |
+| 2     | 0.93      | 0.90   | 0.91     | 4894    |
+
+Accuracy : 85%
 
 #### 📉 Grafik BERT
 
 1. **Accuracy:**
    
-![image](https://github.com/user-attachments/assets/ed2f75f5-c69b-4d63-a9c3-663729a840a1)
-Training accuracy meningkat pesat hingga hampir 95%, dengan testing accuracy stabil di sekitar 92%, menunjukkan model BERT dapat menggeneralisasi dengan baik.
+![image](https://github.com/user-attachments/assets/5ce50b4a-094e-4f37-8260-8fbc237ea297)
+Training accuracy meningkat hingga hampir 95%, sementara validation accuracy stabil di sekitar 85%-87%, menunjukkan model BERT dapat menggeneralisasi dengan baik.
 
 3. **Loss:**
    
-![image](https://github.com/user-attachments/assets/4ccde93a-4bb8-4aa8-9ca4-b53cf55c141e)
-Training loss terus menurun, sementara testing loss sedikit meningkat, menandakan adanya sedikit overfitting, namun tidak signifikan.
-
+![image](https://github.com/user-attachments/assets/c3bb8c68-adb4-4643-a7b7-b88acb4df143)
+Training loss terus menurun, sementara validation loss sedikit meningkat, menunjukkan tanda overfitting ringan.
 
 ---
 
@@ -198,7 +199,7 @@ https://colab.research.google.com/drive/1UzBbQt5mKvm93xSGgXrqX2c2iqXLyTDd#scroll
 | Model | Training Accuracy | Validation Accuracy | Testing Accuracy |
 |-------|-------------------|---------------------|------------------|
 | LSTM  | 90%               | 85%                 | 82%              |
-| BERT  |77.52% ke 89.25%   | 80%-85%             | 84%              |
+| BERT  |90%                | 80%-87%             | 85%              |
 
 ---
 
@@ -209,7 +210,7 @@ https://colab.research.google.com/drive/1UzBbQt5mKvm93xSGgXrqX2c2iqXLyTDd#scroll
      * Akurasi training mencapai 90% dan akurasi test mencapai 82%.
      * Performa bagus dalam menangkap konteks temporal, namun terdapat bukti overfitting karena terdapat kesenjangan antara akurasi training dan test.
    - *BERT*:
-     * Akurasi training meningkat menjadi 89,25% dan akurasi test mencapai 84%.
+     * Akurasi training meningkat menjadi 905% dan akurasi test mencapai 85%.
      * Memahami konteks teks dua arah lebih baik daripada LSTM, sehingga menghasilkan generalisasi yang lebih kuat.
 
 2. **Loss**:
