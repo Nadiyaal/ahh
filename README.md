@@ -63,8 +63,6 @@ Ikuti langkah-langkah berikut untuk menginstal dependencies dan menjalankan apli
    pdm run start
    ```
 
-Aplikasi akan tersedia di `http://127.0.0.1:5000`.
-
 ---
 ## 🗂️ Overview Dataset
 Dataset diambil dari [Master Data File Full Columns](https://github.com/ervandioirzky/analisis-sentimen-indonesia/blob/main/Master%20Data%20File%20Full%20Columns.xlsx). Dataset ini mencakup:
@@ -170,14 +168,15 @@ Accuracy : 85%
 1. **Accuracy:**
    
 ![image](https://github.com/user-attachments/assets/5ce50b4a-094e-4f37-8260-8fbc237ea297)
+
 Training accuracy meningkat hingga hampir 95%, sementara validation accuracy stabil di sekitar 85%-87%, menunjukkan model BERT dapat menggeneralisasi dengan baik.
 
 3. **Loss:**
    
 ![image](https://github.com/user-attachments/assets/c3bb8c68-adb4-4643-a7b7-b88acb4df143)
+
 Training loss terus menurun, sementara validation loss sedikit meningkat, menunjukkan tanda overfitting ringan.
 
----
 
 #### 🧩 Confusion Matrix 📊
 Hasil dari Confusion Matrix
