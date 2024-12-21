@@ -103,7 +103,7 @@ Hasil dari model lstm yang telah di bangun
 
 
 #### 📊 Hasil Evaluasi Model LSTM
-   1. **Training Accuracy**: Sangat tinggi, lebih dari 90%.
+   1. **Training Accuracy**: Sangat tinggi, lebih dari 100%.
    2. **Validation Accuracy**: Stabil di sekitar 85%, menunjukkan kemampuan model untuk menggeneralisasi dengan baik.
    3. **Testing Accuracy**: Sedikit lebih rendah (82%), yang dapat menunjukkan tantangan dalam generalisasi pada data yang lebih bervariasi atau berbeda dari data pelatihan.
 
@@ -208,15 +208,13 @@ https://colab.research.google.com/drive/1UzBbQt5mKvm93xSGgXrqX2c2iqXLyTDd#scroll
    - *LSTM* :
      * Akurasi training mencapai 90% dan akurasi test mencapai 82%.
      * Performa bagus dalam menangkap konteks temporal, namun terdapat bukti overfitting karena terdapat kesenjangan antara akurasi training dan test.
-   * 
    - *BERT*:
      * Akurasi training meningkat menjadi 89,25% dan akurasi test mencapai 84%.
      * Memahami konteks teks dua arah lebih baik daripada LSTM, sehingga menghasilkan generalisasi yang lebih kuat.
 
 2. **Loss**:
    – *LSTM*:
-     * Loss training terus menurun, tetapi test pengujian meningkat setelah beberapa epoch. Hal ini menunjukkan bahwa model cenderung overfit.
-       
+     * Loss training terus menurun, tetapi test pengujian meningkat setelah beberapa epoch. Hal ini menunjukkan bahwa model cenderung overfit. 
   - *BERT*:
     * Loss training terus menurun, dan peningkatan kerugian test relatif kecil, menunjukkan sedikit overfitting namun masih dapat dikelola. 
  
