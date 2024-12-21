@@ -26,6 +26,7 @@ if image_path.is_file():
     }}
     .stTitle {{
         color: black !important;  
+        background-color: rgba(76, 175, 80, 0.8); /* Transparansi */
         font-weight: bold;
         text-align: center;
     }}
@@ -35,14 +36,7 @@ if image_path.is_file():
 else:
     st.error("⚠️ Gambar latar belakang tidak ditemukan!")
 
-st.markdown("<h1 class='stTitle'>🖍 Klasifikasi Teks Sentimen🖍  Selamat Datang di Aplikasi Klasifikasi Sentimen Berbasis AI!</h1>", unsafe_allow_html=True)
-
-# Menambahkan gambar di bawah judul aplikasi
-saham_image_path = Path(__file__).parent / "image/saham.jpg"
-if saham_image_path.is_file():
-    st.image(str(saham_image_path), width=300)  
-else:
-    st.warning("⚠️ Gambar 'saham.png' tidak ditemukan!")
+st.markdown("<h1 class='stTitle'>🖍 Klasifikasi Teks Sentimen🖍  Selamat Datang di Aplikasi Klasifikasi Sentimen unttuk Ujian Akhir Praktikum Pembelajarn Mesin!</h1>", unsafe_allow_html=True)
 
 # Input teks dari pengguna
 text = st.text_area(
@@ -57,8 +51,8 @@ def prediction(input_text):
         return None
     
     try:
-        tokenizer = joblib.load(Path(__file__).parent / "model/tokenizer.joblib")
-        model = tf.keras.models.load_model(Path(__file__).parent / "model/model_lstm.h5")
+        tokenizer = joblib.load(Path(__file__).parent / "models/tokenizer.joblib")
+        model = tf.keras.models.load_model(Path(__file__).parent / "models/lstm.h5")
         
         sequences = tokenizer.texts_to_sequences([input_text])
         pad_seq = tf.keras.preprocessing.sequence.pad_sequences(sequences, maxlen=100, padding='post')
@@ -66,36 +60,34 @@ def prediction(input_text):
         # Prediksi mentah (probabilitas untuk setiap kelas)
         raw_pred = model.predict(pad_seq, verbose=0)[0]
         
-        # Menampilkan raw prediction untuk debugging
-        st.write(f"Raw Prediction (Probabilitas): {raw_pred}")
-        
         # Menentukan hasil prediksi berdasarkan probabilitas tertinggi
         max_prob = np.max(raw_pred)
         
         if max_prob < 0.3:
-            return 2  # Netral jika probabilitas terlalu rendah
+            return 2, raw_pred  # Netral jika probabilitas terlalu rendah
 
         # Menggunakan argmax untuk mendapatkan kelas dengan probabilitas tertinggi
         result = np.argmax(raw_pred)  # Output: 0 (Negatif), 1 (Positif), 2 (Netral)
-        return result
+        return result, raw_pred  # Mengembalikan hasil dan raw_pred untuk ditampilkan
     
     except Exception as e:
         st.error(f"❌ Terjadi kesalahan: {e}")
-        return None
+        return None, None
 
 if st.button("🔍 Analisis Sentimen"):
-    st.subheader("📊 Hasil Analisis Sentimen")
+    st.markdown("<h2 style='color: black; font-weight: bold;'>📊 Hasil Analisis Sentimen</h2>", unsafe_allow_html=True)  # Mengubah warna dan font
     classes = ["❌ Negatif (0)", "✅ Positif (1)", "🔘 Netral (2)"]
 
     with st.spinner("⏳ Memproses teks Anda..."):
         progress = st.progress(0)
         for percent_complete in range(1, 101):
             progress.progress(percent_complete / 100)
-        result = prediction(text)
+        result, raw_pred = prediction(text)
 
     if result is None:
         st.error("⚠️ Gagal memproses prediksi.")
     else:
+        # Menampilkan hasil prediksi sesuai dengan hasil yang diperoleh
         if result == 0:
             st.markdown(f"<h3 style='color: red;'>Hasil: {classes[result]}</h3>", unsafe_allow_html=True)
             st.snow()  # Efek salju untuk negatif
@@ -108,6 +100,25 @@ if st.button("🔍 Analisis Sentimen"):
         with st.expander("📖 Detail Hasil Prediksi"):
             st.write(f"Teks yang dimasukkan: **{text}**")
             st.write(f"Klasifikasi Sentimen: **{classes[result]}**")
+            
+            # Menambahkan box dengan latar belakang hitam untuk detail
+            st.markdown(
+                """
+                <style>
+                .stExpander { 
+                    background-color: black;
+                    color: white;
+                    border-radius: 5px;
+                    padding: 15px;
+                }
+                </style>
+                """, unsafe_allow_html=True
+            )
+            
+            # Menampilkan probabilitas untuk setiap kelas di dalam expander
+            st.write(f"Probabilitas untuk setiap kelas:")
+            for i, prob in enumerate(raw_pred):
+                st.write(f"{classes[i]}: {prob:.4f}")
 
 st.markdown(
     """
