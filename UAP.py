@@ -10,7 +10,7 @@ import base64
 st.set_page_config(page_title="Klasifikasi Teks Sentimen", page_icon="🖍", layout="centered")
 
 # Mengonversi gambar latar belakang menjadi Base64
-image_path = Path(__file__).parent / "image/UAP.jpg"  # Ganti dengan path gambar Anda
+image_path = Path(__file__).parent / "image/UAP.jpg" 
 if image_path.is_file():
     with open(image_path, "rb") as img_file:
         encoded_image = base64.b64encode(img_file.read()).decode()
