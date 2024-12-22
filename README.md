@@ -231,6 +231,14 @@ Akurasi dan generalisasi yang lebih tinggi untuk analisis sentimen, **BERT** ada
 Aplikasi web telah di-deploy dan dapat diakses melalui tautan berikut:  
 [Live Demo Aplikasi](https://uaplatihan.streamlit.app/)
 
+## 🔗 Tampilan Halaman Utama
+
+<img src="https://github.com/user-attachments/assets/28a9ed09-4d57-40e9-bc69-30b248b295f0" alt="Gambar Halaman Utama" width="600">
+
+## 🔗 Tampilan Halaman Prediksi Sentimen
+
+<img src="https://github.com/user-attachments/assets/ef0e71dd-2483-416f-b839-596d52335026" alt="Gambar Halaman Prediksi Sentimen" width="600">
+
 
 ---
 
