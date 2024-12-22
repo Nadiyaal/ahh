@@ -150,16 +150,16 @@ Berikut adalah ilustrasi struktur BERT:
 Pada tahap preprocessing  mencakup data cleaning untuk menghilangkan noise atau data yang tidak relevan, tokenisasi untuk memecah teks menjadi kata atau token, dan stopword removal untuk menghapus kata-kata yang tidak penting seperti "dan", "atau", dan "adalah". dilanjut dengan melakukan splitting dataset menjadi 2 (Training, dan Testing) sesuai dengan penjelasan pada Dataset.
 
 #### 📊 Hasil Evaluasi Model BERT
-1. **Training Accuracy**: Meningkat secara signifikan mecapai 95%.
-2. **Validation Accuracy**: Stabil di sekitar 80%-87%, mencerminkan kemampuan model untuk menggeneralisasi data yang tidak terlihat.
-3. **Testing Accuracy**: Sekitar 85%, menandakan bahwa model cukup baik dalam melakukan prediksi pada data baru setelah pelatihan.
+1. **Training Accuracy**: Meningkat pesat hingga mencapai 96%, menunjukkan model belajar dengan baik.  
+2. **Validation Accuracy**: Stabil di sekitar 90%, mencerminkan generalisasi yang baik.  
+3. **Testing Accuracy**: Diperkirakan sekitar 85%, menunjukkan model cukup handal pada data yang banyak.
 
 #### 📝 Classification Report BERT
 | Label | Precision | Recall | F1-Score | Support |
 |-------|-----------|--------|----------|---------|
-| 0     | 0.70      | 0.71   | 0.71     | 890     |
-| 1     | 0.67      | 0.73   | 0.70     | 1013    |
-| 2     | 0.93      | 0.90   | 0.91     | 4894    |
+| 0     | 0.64      | 0.77   | 0.70     | 890     |
+| 1     | 0.70      | 0.73   | 0.72     | 1013    |
+| 2     | 0.93      | 0.89   | 0.91     | 4894    |
 
 Accuracy : 85%
 
@@ -167,13 +167,13 @@ Accuracy : 85%
 
 1. **Accuracy:**
    
-![image](https://github.com/user-attachments/assets/5ce50b4a-094e-4f37-8260-8fbc237ea297)
+![image](https://github.com/user-attachments/assets/896a984c-0fe5-49e9-b900-e16db6f6d555)
 
 Training accuracy meningkat hingga hampir 95%, sementara validation accuracy stabil di sekitar 85%-87%, menunjukkan model BERT dapat menggeneralisasi dengan baik.
 
 3. **Loss:**
    
-![image](https://github.com/user-attachments/assets/c3bb8c68-adb4-4643-a7b7-b88acb4df143)
+![image](https://github.com/user-attachments/assets/bcf63fd1-21a5-4a32-98ae-c847b61f6497)
 
 Training loss terus menurun, sementara validation loss sedikit meningkat, menunjukkan tanda overfitting ringan.
 
@@ -190,7 +190,7 @@ Hasil dari Confusion Matrix
 | Model | Training Accuracy | Validation Accuracy | Testing Accuracy |
 |-------|-------------------|---------------------|------------------|
 | LSTM  | 90%               | 85%                 | 82%              |
-| BERT  |90%                | 80%-87%             | 85%              |
+| BERT  | 96%               | 90%                 | 85%              |
 
 ---
 
@@ -201,7 +201,7 @@ Hasil dari Confusion Matrix
      * Akurasi training mencapai 90% dan akurasi test mencapai 82%.
      * Performa bagus dalam menangkap konteks temporal, namun terdapat bukti overfitting karena terdapat kesenjangan antara akurasi training dan test.
    - *BERT*:
-     * Akurasi training meningkat menjadi 905% dan akurasi test mencapai 85%.
+     * Akurasi training meningkat menjadi 96% dan akurasi test mencapai 85%.
      * Memahami konteks teks dua arah lebih baik daripada LSTM, sehingga menghasilkan generalisasi yang lebih kuat.
 
 2. **Loss**:
